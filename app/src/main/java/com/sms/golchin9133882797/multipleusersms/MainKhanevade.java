@@ -28,7 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainKhanevade extends Activity implements OnClickListener {
-    Button btnChoose;
+    Button btnChoose,btnsave,btndelet,btnsendact;
     static int ResultCode = 12;
     EditText editChoosen;
     String delim = ";";
@@ -42,8 +42,14 @@ public class MainKhanevade extends Activity implements OnClickListener {
 
         setContentView(R.layout.activity_khanevade);
         btnChoose = (Button) findViewById(R.id.btnChooseContact);
+        btnsave = (Button) findViewById(R.id.btnSave);
+        btndelet = (Button) findViewById(R.id.btndelet);
+        btnsendact = (Button) findViewById(R.id.btnforsend);
         editChoosen = (EditText) findViewById(R.id.edChoosen);
         btnChoose.setOnClickListener(this);
+        btnsave.setOnClickListener(this);
+        btndelet.setOnClickListener(this);
+        btnsendact.setOnClickListener(this);
 
     }
 
@@ -53,6 +59,15 @@ public class MainKhanevade extends Activity implements OnClickListener {
             Intent g = new Intent(MainKhanevade.this, MainActivity.class);
             startActivityForResult(g, ResultCode);
         }
+        if (v==btnsendact){
+            Intent sendnames = new Intent(MainKhanevade.this , SmsMultiple.class);
+            Bundle b = new Bundle();
+            b.putString("contacts",contacts);
+            sendnames.putExtras(b);
+            startActivity(sendnames);
+            finish();
+        }
+
 
 
         String[] cellArray;

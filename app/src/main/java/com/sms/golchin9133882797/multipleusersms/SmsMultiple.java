@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -26,8 +27,10 @@ public class SmsMultiple extends Activity implements OnClickListener {
     ArrayList<String> sendlist = new ArrayList<String>();
     Button b1, b2, btnText, btnGroup;
     String contacts = "";
+    String contactsNew ="";
     String delim = ";";
     TextView ed;
+    public static final String pref = "mypref";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,18 @@ public class SmsMultiple extends Activity implements OnClickListener {
         btnGroup.setOnClickListener(this);
         ed1.setText(null);
         ed2.setText(null);
+
+        Bundle b = getIntent().getExtras();
+        contactsNew = b.getString("contacts");
+        ed1.setText(contactsNew);
+        Toast.makeText(SmsMultiple.this, "done", Toast.LENGTH_SHORT).show();
+
     }
+
+
+//    void Choosestarter(){
+//        final SharedPreferences
+//    }
 
     @Override
     protected void onPause() {
