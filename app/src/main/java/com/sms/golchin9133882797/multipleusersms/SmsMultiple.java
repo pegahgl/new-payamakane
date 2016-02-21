@@ -1,9 +1,6 @@
 package com.sms.golchin9133882797.multipleusersms;
 
 import java.util.ArrayList;
-import java.util.concurrent.Delayed;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -27,7 +24,7 @@ public class SmsMultiple extends Activity implements OnClickListener {
     static int ResultCode = 12;
     static int ResultText = 200;
     ArrayList<String> sendlist = new ArrayList<String>();
-    Button b1, b2, btntext , btnGroup;
+    Button b1, b2, btnText, btnGroup;
     String contacts = "";
     String delim = ";";
     TextView ed;
@@ -41,11 +38,12 @@ public class SmsMultiple extends Activity implements OnClickListener {
         ed1 = (EditText) findViewById(R.id.editText1);
         ed2 = (EditText) findViewById(R.id.editText2);
         ed = (TextView) findViewById(R.id.textView1);
+        btnGroup = (Button) findViewById(R.id.btnGroup);
         b1 = (Button) findViewById(R.id.button3);//send
-        btntext = (Button) findViewById(R.id.btntext);
+        btnText = (Button) findViewById(R.id.btntext);
         b2.setOnClickListener(this);
         b1.setOnClickListener(this);
-        btntext.setOnClickListener(this);
+        btnText.setOnClickListener(this);
         btnGroup.setOnClickListener(this);
         ed1.setText(null);
         ed2.setText(null);
