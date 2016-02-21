@@ -51,11 +51,14 @@ public class SmsMultiple extends Activity implements OnClickListener {
         ed1.setText(null);
         ed2.setText(null);
 
-        Bundle b = getIntent().getExtras();
-        contactsNew = b.getString("contacts");
-        ed1.setText(contactsNew);
-        Toast.makeText(SmsMultiple.this, "done", Toast.LENGTH_SHORT).show();
-
+        try {
+            Bundle b = getIntent().getExtras();
+            contactsNew = b.getString("contacts");
+            ed1.setText(contactsNew);
+            Toast.makeText(SmsMultiple.this, "done", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            e.toString();
+        }
     }
 
 
