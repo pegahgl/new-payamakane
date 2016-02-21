@@ -65,7 +65,7 @@ public class MainKhanevade extends Activity implements OnClickListener {
             b.putString("contacts",contacts);
             sendnames.putExtras(b);
             startActivity(sendnames);
-            finish();
+
         }
 
 
