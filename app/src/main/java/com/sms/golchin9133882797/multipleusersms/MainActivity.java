@@ -1,7 +1,9 @@
 package com.sms.golchin9133882797.multipleusersms;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.app.Activity;
@@ -34,12 +36,15 @@ public class MainActivity extends Activity implements OnItemClickListener {
     MyAdapter ma;
     Button send;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.get);
         getAllCallLogs(this.getContentResolver());
+
         ListView lv = (ListView) findViewById(R.id.lv);
         ma = new MyAdapter();
         lv.setAdapter(ma);

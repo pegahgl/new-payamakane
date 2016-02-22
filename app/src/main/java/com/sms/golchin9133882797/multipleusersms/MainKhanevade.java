@@ -1,40 +1,26 @@
 package com.sms.golchin9133882797.multipleusersms;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.app.Activity;
-import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.util.SparseBooleanArray;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainKhanevade extends Activity implements OnClickListener {
-    Button btnChoose,btnsave,btndelet,btnsendact;
+    Button btnChoose, btnSave, btnDelete, btnSendAct;
     static int ResultCode = 12;
     EditText editChoosen;
     String delim = ";";
     String contacts = "";
     ArrayList<String> sendlist = new ArrayList<String>();
-
+    private DBHelper DbHelper;
+    public SQLiteDatabase newDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +28,27 @@ public class MainKhanevade extends Activity implements OnClickListener {
 
         setContentView(R.layout.activity_khanevade);
         btnChoose = (Button) findViewById(R.id.btnChooseContact);
-        btnsave = (Button) findViewById(R.id.btnSave);
-        btndelet = (Button) findViewById(R.id.btndelet);
-        btnsendact = (Button) findViewById(R.id.btnforsend);
+        btnSave = (Button) findViewById(R.id.btnSave);
+        btnDelete = (Button) findViewById(R.id.btnDelete);
+        btnSendAct = (Button) findViewById(R.id.btnForSend);
         editChoosen = (EditText) findViewById(R.id.edChoosen);
         btnChoose.setOnClickListener(this);
-        btnsave.setOnClickListener(this);
-        btndelet.setOnClickListener(this);
-        btnsendact.setOnClickListener(this);
+        btnSave.setOnClickListener(this);
+        btnDelete.setOnClickListener(this);
+        btnSendAct.setOnClickListener(this);
+
+        DbHelper = new DBHelper(this);
+        try {
+            DbHelper.createDataBase();
+//            DbHelper.copyDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        final String myPath = DBHelper.DB_PATH  + DBHelper.DB_NAME ;
+        newDb = SQLiteDatabase.openDatabase(myPath, null,
+                SQLiteDatabase.OPEN_READWRITE);
+
 
     }
 
@@ -59,7 +58,7 @@ public class MainKhanevade extends Activity implements OnClickListener {
             Intent g = new Intent(MainKhanevade.this, MainActivity.class);
             startActivityForResult(g, ResultCode);
         }
-        if (v==btnsendact){
+        if (v== btnSendAct){
             Intent sendnames = new Intent(MainKhanevade.this , SmsMultiple.class);
             Bundle b = new Bundle();
             b.putString("contacts",contacts);

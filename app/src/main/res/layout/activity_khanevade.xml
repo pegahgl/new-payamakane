@@ -37,13 +37,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="آماده برای ارسال"
-            android:id="@+id/btnforsend" />
+            android:id="@+id/btnForSend" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="حذف"
-            android:id="@+id/btndelet" />
+            android:id="@+id/btnDelete" />
 
         <Button
             android:layout_width="wrap_content"

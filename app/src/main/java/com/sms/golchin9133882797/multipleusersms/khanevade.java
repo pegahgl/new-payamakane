@@ -2,9 +2,7 @@ package com.sms.golchin9133882797.multipleusersms;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,8 +19,8 @@ public class khanevade extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_khanevade);
         btnChoose = (Button)findViewById(R.id.btnChooseContact);
         btnSave = (Button)findViewById(R.id.btnSave);
-        btnDelet = (Button)findViewById(R.id.btndelet);
-        btnSend = (Button)findViewById(R.id.btnforsend);
+        btnDelet = (Button)findViewById(R.id.btnDelete);
+        btnSend = (Button)findViewById(R.id.btnForSend);
         btnChoose.setOnClickListener(this);
         btnSave.setOnClickListener(this);
         btnDelet.setOnClickListener(this);
