@@ -1,9 +1,7 @@
 package com.sms.golchin9133882797.multipleusersms;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.app.Activity;
@@ -13,7 +11,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -23,7 +20,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,13 +41,13 @@ public class MainActivity extends Activity implements OnItemClickListener {
         setContentView(R.layout.get);
         getAllCallLogs(this.getContentResolver());
 
-        ListView lv = (ListView) findViewById(R.id.lv);
+        ListView lv = (ListView) findViewById(R.id.lvContacts);
         ma = new MyAdapter();
         lv.setAdapter(ma);
         lv.setOnItemClickListener(this);
         lv.setItemsCanFocus(false);
         lv.setTextFilterEnabled(true);
-        send = (Button) findViewById(R.id.button1);
+        send = (Button) findViewById(R.id.btnDone);
         send.setOnClickListener(new OnClickListener() {
 
             @Override
